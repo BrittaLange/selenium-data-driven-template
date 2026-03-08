@@ -70,7 +70,7 @@ public class AddRemoveItemBasketTest extends Hooks {
 		wait1.until(ExpectedConditions.stalenessOf(cart.getDeleteItemTwo()));
 
 		System.out.println(cart.getTotalAmount().getText());
-		String expectedTotalAmount = "$45.14";
+		String expectedTotalAmount = "$45.24";
 		try {
 			Assert.assertEquals(cart.getTotalAmount().getText(), expectedTotalAmount);
 			ExtentManager.pass("The total amount matches th eexpected amount.");

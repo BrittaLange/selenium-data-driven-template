@@ -30,7 +30,6 @@ public class WebDriverInstance {
 		// Hat der Thread noch keinen WebDriver, dann wird der Kopie des Thread-lokalen WebDrivers des aktuellen 
 		// Threads der neu erzeugte WebDriver zugewiesen.
 		if(driver.get() == null) {
-			System.out.println("Kein WebDriver in diesem Thread!");
 			try {
 				driver.set(createDriver());
 			} catch (IOException e) {
@@ -44,19 +43,16 @@ public class WebDriverInstance {
 		System.out.println("New driver created!");
 		WebDriver webdriver = null;
 		
-		// System.getProperty("user.dir") zeigt auf das oberste Verzeichnis dieses Projekts, also auf "liveproject1".
+		// System.getProperty("user.dir") zeigt auf das oberste Verzeichnis dieses Projekts.
 		Properties prop = new Properties();
 		FileInputStream data = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\resources\\config.properties");
 		prop.load(data);
 		
 		if(prop.getProperty("browser").equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\java\\drivers\\chromedriver.exe");
 			webdriver = new ChromeDriver();
 		} else if(prop.getProperty("browser").equals("edge")) {
-			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\src\\main\\java\\drivers\\msedgedriver.exe");
 			webdriver = new EdgeDriver();
 		} else if(prop.getProperty("browser").equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\src\\main\\java\\drivers\\geckodriver.exe");
 			webdriver = new FirefoxDriver();
 		} else {
 			System.out.println("Driver not found.");

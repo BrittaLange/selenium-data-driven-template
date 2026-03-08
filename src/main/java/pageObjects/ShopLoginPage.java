@@ -13,8 +13,8 @@ public class ShopLoginPage extends BasePage {
 	WebDriver driver;
 	
 	By alert = By.cssSelector(".alert-danger");
-	By email = By.cssSelector("section input[name='email']");
-	By password = By.cssSelector("input[name='password']");
+	By email = By.id("field-email");
+	By password = By.id("field-password");
 	By submitBtn = By.id("submit-login");
 
 	
